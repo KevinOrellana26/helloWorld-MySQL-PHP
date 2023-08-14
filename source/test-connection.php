@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    $mysqli = new mysqli("mysql", "user", "password");
+    $mysqli = new mysqli("mysql", "user", "password", "mydb");
     if ($mysqli->connect_error) {
         echo "Error al realizar la conexión";
     }

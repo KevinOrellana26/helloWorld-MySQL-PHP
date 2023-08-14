@@ -7,17 +7,17 @@
 </head>
 <body>
     <?php
-    $mysqli = new mysqli("mysql", "user", "password");
+    $mysqli = new mysqli("mysql", "user", "password", "mydb");
     if ($mysqli->connect_error) {
         echo "Error al realizar la conexión";
     }
     else {
-        $mysqli->select_db("mydb");
-        $sql="SELECT * FROM helloWorld";
-        $res=$mysqli->query($sql, MYSQLI_USE_RESULT);
+        $sql = "SELECT * FROM helloWorld";
+        $res = $mysqli->query($sql);
+
         echo "<h1>BD - Hello World</h1>";
         if ($res) {
-            $fila=$res->fetch_assoc();
+            $fila = $res->fetch_assoc();
             echo "<h1>{$fila["mensaje"]}</h1>";
             $res->close();
         }
