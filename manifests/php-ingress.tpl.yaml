@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: php-ingress
+  name: php-mysql-ingress
   namespace: ${namespace}
   annotations:
     cert-manager.io/cluster-issuer: "syndeno-issuer"
@@ -18,7 +18,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: php
+            name: php-mysql-service
             port:
               number: 8080
   tls:

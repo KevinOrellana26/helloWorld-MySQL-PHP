@@ -20,9 +20,9 @@ provider "aws" {
 
 ////// PHP
 
-resource "kubernetes_deployment" "php-deployment" {
+resource "kubernetes_deployment" "php-mysql-deployment" {
   metadata {
-    name      = "php"
+    name      = "php-mysql"
     namespace = var.namespace
   }
   spec {
@@ -52,7 +52,7 @@ resource "kubernetes_deployment" "php-deployment" {
   }
 }
 
-resource "kubernetes_manifest" "php-service" {
+resource "kubernetes_manifest" "php-mysql-service" {
   manifest = yamldecode(templatefile(
     "${path.module}/manifests/php-service.tpl.yaml",
     {
@@ -61,7 +61,7 @@ resource "kubernetes_manifest" "php-service" {
   ))
 }
 
-resource "kubernetes_manifest" "php-ingress" {
+resource "kubernetes_manifest" "php-mysql-ingress" {
   manifest = yamldecode(templatefile(
     "${path.module}/manifests/php-ingress.tpl.yaml",
     {
