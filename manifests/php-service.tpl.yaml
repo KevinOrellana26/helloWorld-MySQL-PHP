@@ -8,6 +8,7 @@ metadata:
 spec:
   selector:
     app: php
+    tier: frontend
   ports:
     - protocol: TCP
       port: 8080

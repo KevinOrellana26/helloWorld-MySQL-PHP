@@ -29,6 +29,7 @@ resource "kubernetes_deployment" "php-mysql-deployment" {
     selector {
       match_labels = {
         app = "php"
+        tier = "frontend"
       }
     }
     replicas = 1
@@ -36,6 +37,7 @@ resource "kubernetes_deployment" "php-mysql-deployment" {
       metadata {
         labels = {
           app = "php"
+          tier = "frontend"
         }
       }
       spec {
@@ -81,6 +83,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
     selector {
       match_labels = {
         app = "mysql"
+        tier = "mysql"
       }
     }
     replicas     = 1
@@ -89,6 +92,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
       metadata {
         labels = {
           app = "mysql"
+          tier = "mysql"
         }
       }
       spec {
