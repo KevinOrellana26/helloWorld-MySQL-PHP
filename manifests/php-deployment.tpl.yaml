@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php
+  namespace: ${namespace}
+spec:
+  selector:
+    matchLabels:
+      app: "php"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "php"
+    spec:
+      containers:
+        name: "php"
+        image: "kevinorellana/mysql:php"
+        port:
+          containerPort: 80
+        imagePullPolicy: Always
