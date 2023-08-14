@@ -20,7 +20,7 @@ spec:
           service:
             name: php-mysql-service
             port:
-              number: 8080
+              number: 80
   tls:
   - hosts: ["mysql.plt.ko.syndeno.net"]
     secretName: "mysql.plt.ko.syndeno.net"
