@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: "myqsl.plt.ko.syndeno.net"
+  - host: "mysql.plt.ko.syndeno.net"
     http:
       paths:
       - path: "/"
@@ -22,5 +22,5 @@ spec:
             port:
               number: 8080
   tls:
-  - hosts: ["myqsl.plt.ko.syndeno.net"]
-    secretName: "myqsl.plt.ko.syndeno.net"
+  - hosts: ["mysql.plt.ko.syndeno.net"]
+    secretName: "mysql.plt.ko.syndeno.net"
