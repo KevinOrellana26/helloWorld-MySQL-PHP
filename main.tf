@@ -46,6 +46,7 @@ resource "kubernetes_deployment" "php-mysql-deployment" {
           image = "kevinorellana/mysql:php"
           port {
             container_port = 80
+            name = "php"
           }
           image_pull_policy = "Always"
         }
@@ -102,6 +103,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
           port {
             protocol       = "TCP"
             container_port = 3306
+            name = "mysql"
           }
           volume_mount {
             name       = "mysql-persistent-storage"
