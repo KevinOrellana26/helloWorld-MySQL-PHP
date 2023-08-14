@@ -6,9 +6,9 @@ metadata:
   labels:
     app: mysql
 spec:
-  clusterIP: None
   selector:
     app: mysql
   ports:
   - protocol: "TCP"
     port: 3306
+  type: NodePort
