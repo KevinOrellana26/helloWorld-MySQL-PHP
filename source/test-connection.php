@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-    $mysqli = new mysqli("mysql.aplicaciones-comunes.svc.cluster.local:3306", "user", "password");
+    $mysqli = new mysqli("mysql:3306", "user", "password");
     if ($mysqli->connect_error) {
         echo "Error al realizar la conexión";
     }
