@@ -113,7 +113,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
           volume_mount {
             name       = "mysql-persistent-storage"
             # mount_path = "/var/lib/mysql"
-            mount_path = "../mysql:/docker-entrypoint-initdb.d"
+            mount_path = "./mysql:/docker-entrypoint-initdb.d"
           }
         }
         volume {
