@@ -99,7 +99,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
       spec {
         container {
           name  = "mysql"
-          image = "kevinorellana/mysql:mysql"
+          image = "mysql:latest"
           command = [ "--default-authentication-plugin=mysql_native_password" ]
           env {
             name = "MYSQL_ROOT_PASSWORD"
