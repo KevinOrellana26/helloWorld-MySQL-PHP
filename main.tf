@@ -99,7 +99,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
       spec {
         container {
           name  = "mysql"
-          image = "mysql:latest"
+          image = "kevinorellana/mysql:mysql"
           port {
             protocol       = "TCP"
             container_port = "3306"
