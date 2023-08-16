@@ -87,8 +87,8 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
         tier = "mysql"
       }
     }
-    replicas     = 1
-    service_name = "mysql"
+    replicas    = 1
+    server_name = "mysql"
     template {
       metadata {
         labels = {
@@ -98,12 +98,28 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
       }
       spec {
         container {
-          name    = "mysql"
-          image   = "kevinorellana/mysql:mysql"
+          name  = "mysql"
+          image = "mysql:latest"
           port {
             protocol       = "TCP"
-            container_port = 3306
+            container_port = "3306"
             name           = "mysql"
+          }
+          env {
+            name  = "MYSQL_ROOT_PASSWORD"
+            value = "root"
+          }
+          env {
+            name  = "MYSQL_DATABASE"
+            value = "mydb"
+          }
+          env {
+            name  = "MYSQL_USER"
+            value = "user"
+          }
+          env {
+            name  = "MYSQL_PASSWORD"
+            value = "password"
           }
           volume_mount {
             name       = "mysql-persistent-storage"
@@ -135,6 +151,72 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
     }
   }
 }
+
+
+
+# resource "kubernetes_stateful_set" "mysql-statefulset" {
+#   metadata {
+#     name      = "mysql"
+#     namespace = var.namespace
+#   }
+#   spec {
+#     selector {
+#       match_labels = {
+#         app  = "mysql"
+#         tier = "mysql"
+#       }
+#     }
+#     replicas     = 1
+#     service_name = "mysql"
+#     template {
+#       metadata {
+#         labels = {
+#           app  = "mysql"
+#           tier = "mysql"
+#         }
+#       }
+#       spec {
+#         container {
+#           name    = "mysql"
+#           image   = "kevinorellana/mysql:mysql"
+#           port {
+#             protocol       = "TCP"
+#             container_port = 3306
+#             name           = "mysql"
+#           }
+#           volume_mount {
+#             name       = "mysql-persistent-storage"
+#             mount_path = "/var/lib/mysql"
+#           }
+#         }
+#         volume {
+#           name = "mysql-persistent-storage"
+#           persistent_volume_claim {
+#             claim_name = "mysql-pv-claim"
+#           }
+#         }
+#       }
+#     }
+#     volume_claim_template {
+#       metadata {
+#         name      = "mysql-persistent-storage"
+#         namespace = var.namespace
+#       }
+#       spec {
+#         storage_class_name = "gp3"
+#         access_modes       = ["ReadWriteOnce"]
+#         resources {
+#           requests = {
+#             storage = "1Gi"
+#           }
+#         }
+#       }
+#     }
+#   }
+# }
+
+
+
 
 resource "kubernetes_manifest" "mysql-service" {
   manifest = yamldecode(templatefile(
