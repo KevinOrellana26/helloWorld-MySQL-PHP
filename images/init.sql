@@ -1,4 +1,4 @@
-CREATE TABLE helloWorld (
+CREATE TABLE IF NOT EXISTS helloWorld (
     id INT PRIMARY KEY AUTO_INCREMENT,
     mensaje VARCHAR(100)
 );
