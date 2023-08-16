@@ -1,13 +1,5 @@
 FROM mysql:latest
 
 ENV MYSQL_ROOT_PASSWORD=root
-ENV MYSQL_USER=user
-ENV MYSQL_PASSWORD=password
-ENV MYSQL_DATABASE=mydb
-ENV TABLE_NAME=helloWorld
 
 COPY ../source/helloWorld.sql /docker-entrypoint-initdb.d/
-
-EXPOSE 3306
-
-CMD [ "docker-entrypoint.sh", "mysqld" ]
