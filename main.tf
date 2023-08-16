@@ -88,7 +88,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
       }
     }
     replicas    = 1
-    server_name = "mysql"
+    service_name = "mysql"
     template {
       metadata {
         labels = {
