@@ -7,9 +7,6 @@
 </head>
 <body>
     <?php
-// Depurar errores
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
 
     $host  = "mysql";
     $port = "3306";
