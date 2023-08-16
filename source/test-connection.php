@@ -7,11 +7,15 @@
 </head>
 <body>
     <?php
-    $host  = "mysql"
-    $port = "3306"
-    $user = "user"
-    $pass = "user"
-    $db = "mydb"
+// Depurar errores
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+
+    $host  = "mysql";
+    $port = "3306";
+    $user = "user";
+    $pass = "user";
+    $db = "mydb";
 
     $conn = new mysqli($host, $user, $pass, $db, $port);
 
