@@ -109,18 +109,18 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
             name  = "MYSQL_ROOT_PASSWORD"
             value = "root"
           }
-          env {
-            name  = "MYSQL_DATABASE"
-            value = "mydb"
-          }
-          env {
-            name  = "MYSQL_USER"
-            value = "user"
-          }
-          env {
-            name  = "MYSQL_PASSWORD"
-            value = "password"
-          }
+          # env {
+          #   name  = "MYSQL_DATABASE"
+          #   value = "mydb"
+          # }
+          # env {
+          #   name  = "MYSQL_USER"
+          #   value = "user"
+          # }
+          # env {
+          #   name  = "MYSQL_PASSWORD"
+          #   value = "password"
+          # }
           volume_mount {
             name       = "mysql-persistent-storage"
             mount_path = "/var/lib/mysql"
