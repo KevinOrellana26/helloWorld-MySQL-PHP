@@ -100,6 +100,11 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
         container {
           name  = "mysql"
           image = "kevinorellana/mysql:mysql"
+          command = [ "--default-authentication-plugin=mysql_native_password" ]
+          env {
+            name = "MYSQL_ROOT_PASSWORD"
+            value = "root"
+          }
           port {
             protocol       = "TCP"
             container_port = 3306
@@ -107,7 +112,8 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
           }
           volume_mount {
             name       = "mysql-persistent-storage"
-            mount_path = "/var/lib/mysql"
+            # mount_path = "/var/lib/mysql"
+            mount_path = "../mysql:/docker-entrypoint-initdb.d"
           }
         }
         volume {
