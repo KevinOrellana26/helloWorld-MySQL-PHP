@@ -10,7 +10,7 @@
     echo "<h1>Test-connection to MySQL</h1>";
     $host  = "mysql";
     $user = "user";
-    $pass = "user";
+    $pass = "password";
     $db = "mydb";
 
     $conn = new mysqli($host, $user, $pass, $db);
