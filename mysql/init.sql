@@ -3,4 +3,4 @@ CREATE TABLE IF NOT EXISTS helloWorld (
     mensaje VARCHAR(100)
 );
 
-INSERT INTO helloWorld (mensaje) VALUES ('Hello World');
+INSERT INTO helloWorld (mensaje) VALUES ('Hello World from MySQL!!!!!!');
