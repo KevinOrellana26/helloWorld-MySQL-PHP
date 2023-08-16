@@ -9,18 +9,17 @@
     <?php
     echo "<h1>Test-connection to MySQL</h1>";
     $host  = "mysql";
-    $port = "3306";
     $user = "user";
     $pass = "user";
     $db = "mydb";
 
-    $conn = new mysqli($host, $user, $pass, $db, $port);
+    $conn = new mysqli($host, $user, $pass, $db);
 
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    echo "<h3>Connected successfully to MySQL</h3>";
+    echo "<h3>Connected successfully to MySQL!!!</h3>";
 
     $conn->close();
     ?>

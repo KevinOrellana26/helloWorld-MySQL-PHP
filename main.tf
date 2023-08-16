@@ -43,7 +43,7 @@ resource "kubernetes_deployment" "php-mysql-deployment" {
       spec {
         container {
           name  = "php"
-          image = "kevinorellana/mysql:php"
+          image = "kevinorellana/php-mysql:php"
           port {
             container_port = 80
             name           = "php"
@@ -99,7 +99,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
       spec {
         container {
           name  = "mysql"
-          image = "kevinorellana/mysql:mysql"
+          image = "kevinorellana/mysql:mysql-v1"
           port {
             protocol       = "TCP"
             container_port = "3306"
