@@ -99,11 +99,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
       spec {
         container {
           name    = "mysql"
-          image   = "mysql:latest"
-          env {
-            name  = "MYSQL_ROOT_PASSWORD"
-            value = "root"
-          }
+          image   = "kevinorellana/mysql:mysql"
           port {
             protocol       = "TCP"
             container_port = 3306
@@ -113,21 +109,11 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
             name       = "mysql-persistent-storage"
             mount_path = "/var/lib/mysql"
           }
-          volume_mount {
-            name       = "data"
-            mount_path = "/mysql"
-          }
         }
         volume {
           name = "mysql-persistent-storage"
           persistent_volume_claim {
             claim_name = "mysql-pv-claim"
-          }
-        }
-        volume {
-          name = "data"
-          host_path {
-            path = "/docker-entrypoint-initdb.d"
           }
         }
       }
