@@ -28,7 +28,7 @@ resource "kubernetes_deployment" "php-mysql-deployment" {
   spec {
     selector {
       match_labels = {
-        app = "php"
+        app  = "php"
         tier = "frontend"
       }
     }
@@ -36,7 +36,7 @@ resource "kubernetes_deployment" "php-mysql-deployment" {
     template {
       metadata {
         labels = {
-          app = "php"
+          app  = "php"
           tier = "frontend"
         }
       }
@@ -46,7 +46,7 @@ resource "kubernetes_deployment" "php-mysql-deployment" {
           image = "kevinorellana/mysql:php"
           port {
             container_port = 80
-            name = "php"
+            name           = "php"
           }
           image_pull_policy = "Always"
         }
@@ -83,7 +83,7 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
   spec {
     selector {
       match_labels = {
-        app = "mysql"
+        app  = "mysql"
         tier = "mysql"
       }
     }
@@ -92,30 +92,30 @@ resource "kubernetes_stateful_set" "mysql-statefulset" {
     template {
       metadata {
         labels = {
-          app = "mysql"
+          app  = "mysql"
           tier = "mysql"
         }
       }
       spec {
         container {
-          name  = "mysql"
-          image = "mysql:latest"
-          command = [ "--default-authentication-plugin=mysql_native_password" ]
+          name    = "mysql"
+          image   = "mysql:latest"
+          command = ["--default-authentication-plugin=mysql_native_password"]
           env {
-            name = "MYSQL_ROOT_PASSWORD"
+            name  = "MYSQL_ROOT_PASSWORD"
             value = "root"
           }
           port {
             protocol       = "TCP"
             container_port = 3306
-            name = "mysql"
+            name           = "mysql"
           }
           volume_mount {
             name       = "mysql-persistent-storage"
             mount_path = "/var/lib/mysql"
           }
           volume_mount {
-            name = "data"
+            name       = "data"
             mount_path = "/mysql"
           }
         }
